@@ -4,6 +4,19 @@ $('.input-wrapper form').on('submit',function (e) {
     var name = $('#name-input').val();
     $('.main .user-name').html('Welcome, ' + name);
     $('.main').removeClass('hidden');
+    $(document).on('keypress', function (e) {
+        if(e.keyCode === 32) {
+            var audio = $('audio')[0];
+            if(audio.paused) {
+                audio.play();
+                $('.clickable').removeClass('fa-play').addClass('fa-pause')
+            }
+            else {
+                audio.pause();
+                $('.clickable').removeClass('fa-pause').addClass('fa-play')
+            }
+        }
+    });
 });
 
 $('.clickable').on('click', function () {
@@ -17,3 +30,5 @@ $('.clickable').on('click', function () {
         $(this).removeClass('fa-pause').addClass('fa-play')
     }
 });
+
+
